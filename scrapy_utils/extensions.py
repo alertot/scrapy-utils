@@ -24,8 +24,8 @@ class ItemStatsExtension(object):
             # Initialize stats to also register fields with 0 ocurrences
             if item_classname not in self.registry:
                 self.stats.set_value(key, 0, spider=spider)
-            else:
-                if field in item:
-                    self.stats.inc_value(key, spider=spider)
+
+            if field in item:
+                self.stats.inc_value(key, spider=spider)
 
         self.registry.add(item_classname)
