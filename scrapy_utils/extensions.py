@@ -1,4 +1,4 @@
-from scrapy import signals
+from scrapy import Item, signals
 
 
 class ItemStatsExtension(object):
@@ -17,6 +17,10 @@ class ItemStatsExtension(object):
 
     def item_scraped(self, item, spider):
         item_classname = item.__class__.__name__
+
+        # No support for dicts as they are dynamic
+        if not isinstance(item, Item):
+            return
 
         for field in item.fields:
             key = 'itemstats/{}/{}'.format(item_classname, field)
