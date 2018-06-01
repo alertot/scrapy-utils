@@ -6,3 +6,7 @@ class EmptyMixin:
     def add_value_if_empty(self, field_name, value, *processors, **kw):
         if not self.get_output_value(field_name):
             self.add_value(field_name, value, *processors, **kw)
+
+    def add_css_if_empty(self, field_name, css, *processors, **kw):
+        if not self.get_output_value(field_name):
+            self.add_css(field_name, css, *processors, **kw)
